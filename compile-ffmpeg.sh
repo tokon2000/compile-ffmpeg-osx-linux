@@ -706,7 +706,7 @@ buildLibs() {
     if [[ " ${FFMPEG_LIBS[@]} " =~ "--enable-openssl" ]] || [[ " ${FFMPEG_LIBS[@]} " =~ "--enable-libsrt" ]]; then
         if [ -f "$LOCALDESTDIR/lib/libssl.a" ]; then
             echo -------------------------------------------------
-            echo "openssl-1.1.1u is already compiled"
+            echo "openssl-1.1.1w is already compiled"
             echo -------------------------------------------------
         else
             echo -ne "\033]0;compile openssl 64Bit\007"
@@ -717,14 +717,14 @@ buildLibs() {
                 target="linux-x86_64"
             fi
 
-            do_curl "https://www.openssl.org/source/openssl-1.1.1u.tar.gz"
+            do_curl "https://www.openssl.org/source/openssl-1.1.1w.tar.gz"
 
             ./Configure --prefix=$LOCALDESTDIR --openssldir=$LOCALDESTDIR $target --libdir="$LOCALDESTDIR/lib" no-shared enable-camellia enable-idea enable-mdc2 enable-rfc3779 -mtune=$tune $osExtra
 
             make depend all
             make install_sw
 
-            do_checkIfExist openssl-1.1.1u libssl.a
+            do_checkIfExist openssl-1.1.1w libssl.a
         fi
     fi
 
