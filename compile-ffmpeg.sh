@@ -381,7 +381,7 @@ buildLibs() {
     else
         echo -ne "\033]0;compile libz 64Bit\007"
 
-        do_curl "https://zlib.net/zlib-1.3.tar.gz"
+        do_curl "https://zlib.net/zlib-1.3.1.tar.gz"
 
         ./configure --prefix="$LOCALDESTDIR" --static
 
